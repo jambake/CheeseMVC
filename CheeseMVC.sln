@@ -1,0 +1,32 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{D7FA601F-8015-4374-9FA3-43792C8024EF}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{DC0DC8F6-BECE-4802-A7BA-88F5721F87EC}"
+	ProjectSection(SolutionItems) = preProject
+		global.json = global.json
+	EndProjectSection
+EndProject
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "CheeseMVC", "src\CheeseMVC\CheeseMVC.xproj", "{25DF62D1-3F5B-411F-8132-D4D7BAAB4072}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{25DF62D1-3F5B-411F-8132-D4D7BAAB4072}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{25DF62D1-3F5B-411F-8132-D4D7BAAB4072}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{25DF62D1-3F5B-411F-8132-D4D7BAAB4072}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{25DF62D1-3F5B-411F-8132-D4D7BAAB4072}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{25DF62D1-3F5B-411F-8132-D4D7BAAB4072} = {D7FA601F-8015-4374-9FA3-43792C8024EF}
+	EndGlobalSection
+EndGlobal
