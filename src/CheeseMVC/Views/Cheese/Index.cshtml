@@ -17,16 +17,13 @@
         <th>Name</th>
         <th>Description</th>
     </tr>
-
-
     
         @foreach (var cheese in ViewBag.cheeses)
         {
             <tr>
-                <th>@cheese.Name</th>
-                <th>@cheese.Description</th>
+                <td><a asp-controller="Cheese" asp-action="Detail" asp-route-id="@cheese.CheeseId">@cheese.Name</a></td>
+                <td>@cheese.Description</td>
             </tr>
         }
     
-
 </table>

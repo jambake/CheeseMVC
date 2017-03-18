@@ -54,5 +54,12 @@ namespace CheeseMVC.Controllers
             }
             return Redirect("/");
         }
+
+
+        public IActionResult Detail(int id)
+        {
+            Cheese cheese = CheeseData.GetById(id);
+            return View(cheese);
+        }
     }
 }
