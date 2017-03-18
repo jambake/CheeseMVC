@@ -6,10 +6,10 @@
 <p><a asp-controller="Cheese" asp-action="">Cheese List</a></p>
 
 <form method="post">
-    @foreach (string name in ViewBag.cheeses)
+    @foreach (var cheese in ViewBag.cheeses)
     {
-        <input type="checkbox" name="cheese" value="@name" id="@name"/>
-        <label for="@name">@name</label>
+        <input type="checkbox" value="@cheese.CheeseId" id="@cheese.CheeseId" name="cheeseIds"/>
+        <label for="@cheese.CheeseId">@cheese.Name</label>
         <br />
     }
     <input type="submit" value="Remove Cheese" />

@@ -12,13 +12,10 @@ namespace CheeseMVC.Controllers
     public class CheeseController : Controller
     {
         // static = available to any code within class, doesn't belong to one instance of the class
-        static private Dictionary<string, string> Cheeses = new Dictionary<string, string>();
-        Cheese cheeseModel = new Cheese();
-
         // GET: /<controller>/
         public IActionResult Index()
         {
-            ViewBag.cheeses = Cheeses;
+            ViewBag.cheeses = CheeseData.GetAll();
 
             return View();
         }
@@ -27,32 +24,35 @@ namespace CheeseMVC.Controllers
         {
             return View();
         }
+        [HttpPost]
+        [Route("/Cheese/Add")]
+        public IActionResult NewCheese(Cheese newCheese)
+        //public IActionResult NewCheese(string name, string description)
+        {
+            CheeseData.Add(newCheese);
+                /*new Cheese {
+                Name = name,
+                Description = description
+            });*/
+
+            return Redirect("/");
+        }
+
         public IActionResult Remove()
         {
-            ViewBag.cheeses = Cheeses.Keys;
+            ViewBag.cheeses = CheeseData.GetAll();
 
             return View();
         }
-        
-        [HttpPost]
-        [Route("/Cheese/Add")]
-        public IActionResult NewCheese(string name, string description)
-        {
-
-            Cheeses.Add(cheeseModel.Name, cheeseModel.Description);
-
-            return Redirect("/Cheese");
-        }
-
         [HttpPost]
         [Route("/Cheese/Remove")]
-        public IActionResult RemoveCheese(string[] cheese)
+        public IActionResult RemoveCheese(int[] cheeseIds)
         {
-            foreach (string cheeser in cheese)
+            foreach (int id in cheeseIds)
             {
-                Cheeses.Remove(cheeser);
+                CheeseData.Remove(id);
             }
-            return Redirect("/Cheese");
+            return Redirect("/");
         }
     }
 }
