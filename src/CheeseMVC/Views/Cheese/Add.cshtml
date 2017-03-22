@@ -1,15 +1,24 @@
-﻿@{
-}
-
+﻿@model CheeseMVC.ViewModels.AddCheeseViewModel
 <h1>Add Cheese</h1>
 
 <p><a asp-controller="Cheese" asp-action="">Cheese List</a></p>
 
-<form method="post">
-    <h4>Cheese</h4>
-    <input name="name" type="text"/>
-    <h4>Description</h4>
-    <textarea name="description" type="text"></textarea>
-    <br />
-    <input type="submit" value="Add Cheese"/>
+<form asp-controller="Cheese" asp-action="Add" method="post">
+
+    @*<div asp-validation-summary="All"></div>*@
+
+    <div class="form-group">
+        <label asp-for="Name"></label>
+        <input asp-for="Name" class="form-control" />
+        <span asp-validation-for="Name"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Description"></label>
+        <input asp-for="Description" class="form-control" />
+    </div>
+
+    <select asp-for="Type" asp-items="Model.CheeseTypes"></select>
+
+    <input type="submit" value="Add Cheese" />
+
 </form>

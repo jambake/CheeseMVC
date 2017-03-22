@@ -1,11 +1,11 @@
-﻿@{
-}
+﻿@model CheeseMVC.ViewModels.AllCheesesViewModel
 
 <h1>My Cheese</h1>
 
 <p><a asp-controller="Cheese" asp-action="Add">Add Cheese</a></p>
 
-@if (ViewBag.cheeses.Count == 0)
+@*if (ViewBag.cheeses.Count == 0)*@
+@if (Model.Cheeses.Count == 0)
 {
     <p>No cheese yet!</p>
 
@@ -16,13 +16,15 @@
     <tr>
         <th>Name</th>
         <th>Description</th>
+        <th>Type</th>
     </tr>
     
-        @foreach (var cheese in ViewBag.cheeses)
+        @foreach (var cheese in Model.Cheeses)
         {
             <tr>
                 <td><a asp-controller="Cheese" asp-action="Detail" asp-route-id="@cheese.CheeseId">@cheese.Name</a></td>
                 <td>@cheese.Description</td>
+                <td>@cheese.Type</td>
             </tr>
         }
     

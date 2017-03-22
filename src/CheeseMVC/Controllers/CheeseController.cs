@@ -1,9 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using CheeseMVC.Models;
+using CheeseMVC.ViewModels;
 
 // For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -15,27 +12,39 @@ namespace CheeseMVC.Controllers
         // GET: /<controller>/
         public IActionResult Index()
         {
-            ViewBag.cheeses = CheeseData.GetAll();
+            //ViewBag.cheeses = CheeseData.GetAll();
+            // ViewBag is basically a Dictionary
+            AllCheesesViewModel allCheeseViewModel = new AllCheesesViewModel();
 
-            return View();
+            return View(allCheeseViewModel);
         }
 
         public IActionResult Add()
         {
-            return View();
-        }
-        [HttpPost]
-        [Route("/Cheese/Add")]
-        public IActionResult NewCheese(Cheese newCheese)
-        //public IActionResult NewCheese(string name, string description)
-        {
-            CheeseData.Add(newCheese);
-                /*new Cheese {
-                Name = name,
-                Description = description
-            });*/
+            AddCheeseViewModel addCheeseViewModel = new AddCheeseViewModel();
 
-            return Redirect("/");
+            return View(addCheeseViewModel);
+        }
+
+        [HttpPost]
+        public IActionResult Add(AddCheeseViewModel addCheeseViewModel)
+        {
+            if (ModelState.IsValid)
+            {
+                Cheese newCheese = new Models.Cheese
+                {
+                    Name = addCheeseViewModel.Name,
+                    Description = addCheeseViewModel.Description,
+                    Type = addCheeseViewModel.Type
+                };
+
+                CheeseData.Add(newCheese);
+
+                return Redirect("/");
+            }
+
+            return View(addCheeseViewModel);
+
         }
 
         public IActionResult Remove()
