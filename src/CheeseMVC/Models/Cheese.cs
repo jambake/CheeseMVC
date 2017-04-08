@@ -4,6 +4,7 @@ namespace CheeseMVC.Models
 {
     public class Cheese
     {
+        public int ID { get; set; } // Can also be named 'CheeseID' for entity framework to recognize as a 'Primary Key'
         public string Name { get; set; }
         public string Description { get; set; }
         public CheeseType Type { get; set; }
@@ -23,15 +24,6 @@ namespace CheeseMVC.Models
             }
         }
 
-        public int CheeseId { get; set; }
-        private static int nextId = 1;
-
-        public Cheese()
-        {
-            CheeseId = nextId;
-            nextId++;
-        }
-
         // override object.Equals
         public override bool Equals(object obj)
         {
@@ -40,13 +32,13 @@ namespace CheeseMVC.Models
                 return false;
             }
 
-            return this.CheeseId == (obj as Cheese).CheeseId;
+            return this.ID == (obj as Cheese).ID;
         }
 
         // override object.GetHashCode
         public override int GetHashCode()
         {
-            return CheeseId;
+            return ID;
         }
 
     }

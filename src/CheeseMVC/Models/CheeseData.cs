@@ -26,7 +26,7 @@ namespace CheeseMVC.Models
 
         public static Cheese GetById(int id)
         {
-            return Cheeses.Single(x => x.CheeseId == id);
+            return Cheeses.Single(x => x.ID == id);
         }
 
         public static IList<Cheese> GetSortByRating()

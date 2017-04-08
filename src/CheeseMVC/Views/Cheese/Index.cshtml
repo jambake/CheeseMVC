@@ -22,7 +22,7 @@
         @foreach (var cheese in Model.Cheeses)
         {
             <tr>
-                <td><a asp-controller="Cheese" asp-action="Detail" asp-route-id="@cheese.CheeseId">@cheese.Name</a></td>
+                <td><a asp-controller="Cheese" asp-action="Detail" asp-route-id="@cheese.ID">@cheese.Name</a></td>
                 <td>@cheese.Description</td>
                 <td>@cheese.Type</td>
             </tr>
